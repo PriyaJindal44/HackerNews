@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of newsList;let i = index">
+      <tr *ngFor="let item of newsList| paginate: config;let i=index">
         <ng-container>
           <td>0</td>
           <td>{{item.votes}}</td>
@@ -25,9 +25,22 @@
 
     </tbody>
   </table>
-  <div class="pagination-row">
-    <label>Previous | Next</label>
-  </div>
+
+  <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
+
+
+    <div class="custom-pagination" style="float: right;
+    margin-right: 4px;">
+      <div class="pagination-label">
+        <span (click)="p.previous()">
+          Previous </span> |
+      </div>
+      <div class="pagination-label">
+        <span (click)="p.next()"> Next </span>
+      </div>
+    </div>
+
+  </pagination-template>
   <hr class="line-container">
   <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
 </div>

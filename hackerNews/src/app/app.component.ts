@@ -11,6 +11,7 @@ export class AppComponent {
   public newsList;
   public isState: Boolean = false;
   public dataKey = "userList";
+  config: any;
   // Create item:
   public userData = [{ id: '1', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
   { id: '2', votes: 0, value: 'An Open Letter', hidden: false },
@@ -28,6 +29,7 @@ export class AppComponent {
     if (localStorage.getItem("userList") === null) {
       localStorage.setItem(this.dataKey, JSON.stringify(this.userData));
       this.newsList = JSON.parse(localStorage.getItem(this.dataKey));
+
     }
     else {
       //localStorage.setItem(this.dataKey, JSON.stringify(this.userData));
@@ -35,6 +37,27 @@ export class AppComponent {
 
     }
 
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.newsList.length
+    };
+
+  }
+  public maxSize: number = 7;
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+    previousLabel: '<--',
+    nextLabel: '-->',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+  onPageChange(event) {
+    console.log(event);
+    this.config.currentPage = event;
   }
 
   countVotes(index, item) {

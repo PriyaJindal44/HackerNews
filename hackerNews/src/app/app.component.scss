@@ -62,4 +62,31 @@
       font-weight: 600;
     }
   }
+
+  .custom-pagination .page-number {
+    display: inline-block;
+    /* padding: 5px 12px; */
+    background: #afffe6;
+    margin: 0px 4px;
+    border-radius: 25px;
+  }
+
+  .page-number.current {
+    background: #ffffff !important;
+    border: 2px solid #458873;
+  }
+
+  .page-number span {
+    display: block;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .pagination-label {
+    display: inline-block;
+    font-weight: bold;
+    color: #ff7f50;
+  }
 }
