@@ -1,5 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="main-div">
   <table class="table-container" style="width:99%">
     <thead class="head-container">
@@ -11,12 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of newsList| paginate: config;let i=index">
+      <tr *ngFor="let item of newsList| paginate: config;let i=index" [hidden]="item.hidden"
+        [ngClass]="{'hidden':item.hidden}">
         <ng-container>
           <td>0</td>
           <td>{{item.votes}}</td>
-          <td><i class="fa fa-sort-up icon" (click)="countVotes(i,item)"></i></td>
-          <td>{{item.value}} <button (click)="hideRow(i)">[hide]</button></td>
+          <td><i class="fa fa-sort-up icon" (click)="countVotes(item)"></i></td>
+          <td>{{item.value}} <button (click)="hideRow(item)">[hide]</button></td>
         </ng-container>
       </tr>
 
@@ -42,5 +44,10 @@
 
   </pagination-template>
   <hr class="line-container">
-  <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+
+  <span class="yAxis">Votes</span>
+  <canvas #lineChart>{{ chart }}</canvas>
+
+  <span class="xAxis">ID</span>
+  <hr class="line-container">
 </div>

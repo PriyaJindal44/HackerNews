@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-
+import { Chart } from 'chart.js';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  @ViewChild('lineChart') private chartRef;
+  chart: any;
   title = 'hackerNews';
   public newsList;
   public isState: Boolean = false;
@@ -22,8 +24,68 @@ export class AppComponent {
   { id: '7', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
   { id: '8', votes: 0, value: 'An Open Letter', hidden: false },
   { id: '9', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
-  { id: '10', votes: 0, value: 'An Open Letter', hidden: false },
+  { id: '10', votes: 0, value: 'An Open Letter XXXXXXXX', hidden: false },
+  { id: '11', votes: 0, value: 'An Open Letter GGGGG', hidden: false },
+  { id: '12', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '13', votes: 0, value: 'An Open Letter', hidden: false },
+  { id: '14', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '15', votes: 0, value: 'An Open Letter', hidden: false },
+  { id: '16', votes: 0, value: 'An Open Letter GGGGG', hidden: false },
+  { id: '17', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '18', votes: 0, value: 'An Open Letter', hidden: false },
+  { id: '19', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '20', votes: 0, value: 'An Open Letter', hidden: false }
   ];
+
+  constructor(private cdr: ChangeDetectorRef) {
+
+  }
+
+  ngAfterViewInit() {
+
+    let newsID = [];
+    let votes = [];
+
+    for (let x = 0; x < this.newsList.length; x++) {
+      newsID.push(this.newsList[x].id);
+      votes.push(this.newsList[x].votes);
+    }
+
+    this.chart = new Chart(this.chartRef.nativeElement, {
+      type: 'line',
+
+      data: {
+        labels: newsID, // your labels array
+        datasets: [
+          {
+            data: votes, // your data array
+            borderColor: '#00AEFF',
+            fill: false
+
+          }
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true
+
+
+          }],
+          yAxes: [{
+            display: true
+          }],
+        }
+      }
+    });
+    this.cdr.detectChanges();
+  }
+
+
+
 
   ngOnInit() {
     if (localStorage.getItem("userList") === null) {
@@ -38,10 +100,12 @@ export class AppComponent {
     }
 
     this.config = {
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       currentPage: 1,
       totalItems: this.newsList.length
     };
+
+
 
   }
   public maxSize: number = 7;
@@ -60,10 +124,10 @@ export class AppComponent {
     this.config.currentPage = event;
   }
 
-  countVotes(index, item) {
+  countVotes(item) {
     let updatedVote = 0;
     for (let i = 0; i < this.newsList.length; i++) {
-      if (index == i) {
+      if (item.id == i + 1) {
         updatedVote = item.votes + 1;
         this.newsList[i].votes = updatedVote;
       }
@@ -74,20 +138,14 @@ export class AppComponent {
 
   hideRow = (index) => {
     for (let i = 0; i < this.newsList.length; i++) {
-      if (index == i) {
+      if (index.id == i + 1) {
         this.newsList[i].hidden = true;
       }
     }
     localStorage.setItem("userList", JSON.stringify(this.newsList));
   }
 
-  // isAllowed = (hidden) => {
-  //   return hidden === 0 ? true : this.isState;
-  // }
 
-  // changeState = () => {
-  //   this.isState = !this.isState;
-  // }
 
 
 
