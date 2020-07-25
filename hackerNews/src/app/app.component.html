@@ -12,12 +12,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of newsList;let i = index">
-        <!-- //<ng-container *ngIf="isAllowed(item.hidden)"> -->
-        <td>0</td>
-        <td>{{item.votes}}</td>
-        <td><i class="fa fa-sort-up icon" (click)="countVotes($event,item)"></i></td>
-        <td>{{item.value}} <button>[hide]</button></td>
-        <!-- //</ng-container> -->
+        <ng-container>
+          <td>0</td>
+          <td>{{item.votes}}</td>
+          <td><i class="fa fa-sort-up icon" (click)="countVotes(i,item)"></i></td>
+          <td>{{item.value}} <button (click)="hideRow(i)">[hide]</button></td>
+        </ng-container>
       </tr>
 
     </tbody>
