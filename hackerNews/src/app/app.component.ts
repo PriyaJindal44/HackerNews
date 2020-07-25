@@ -133,6 +133,7 @@ export class AppComponent implements AfterViewInit {
       }
     }
     localStorage.setItem("userList", JSON.stringify(this.newsList));
+    this.ngAfterViewInit();
     return updatedVote;
   }
 
