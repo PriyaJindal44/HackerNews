@@ -8,6 +8,7 @@
   padding: 4px;
   background-color: #d3d3d3;
   background-clip: content-box;
+  cursor: pointer;
   .table-container {
     //padding-left: 5px;
     //padding-right: 5px;
@@ -98,6 +99,8 @@
     max-height: 266px;
     margin-left: 25px;
     max-width: 760px;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .xAxis {
