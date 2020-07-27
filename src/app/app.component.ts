@@ -15,27 +15,27 @@ export class AppComponent implements AfterViewInit {
   public dataKey = "userList";
   config: any;
   // Create item:
-  public userData = [{ id: '1', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
-  { id: '2', votes: 0, value: 'An Open Letter', hidden: false },
-  { id: '3', votes: 0, value: 'When your profiler lies', hidden: false },
-  { id: '4', votes: 0, value: 'JIRA is antipattern.', hidden: false },
-  { id: '5', votes: 0, value: 'Netflix biggest competition is youtube.', hidden: false },
-  { id: '6', votes: 0, value: 'An Open Letter', hidden: false },
+  public userData = [{ id: '1', votes: 8, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '2', votes: 10, value: 'An Open Letter', hidden: false },
+  { id: '3', votes: 70, value: 'When your profiler lies', hidden: false },
+  { id: '4', votes: 41, value: 'JIRA is antipattern.', hidden: false },
+  { id: '5', votes: 20, value: 'Netflix biggest competition is youtube.', hidden: false },
+  { id: '6', votes: 40, value: 'An Open Letter', hidden: false },
   { id: '7', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
-  { id: '8', votes: 0, value: 'An Open Letter', hidden: false },
+  { id: '8', votes: 35, value: 'An Open Letter', hidden: false },
   { id: '9', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
   { id: '10', votes: 0, value: 'An Open Letter XXXXXXXX', hidden: false },
   { id: '11', votes: 0, value: 'An Open Letter GGGGG', hidden: false },
-  { id: '12', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
-  { id: '13', votes: 0, value: 'An Open Letter', hidden: false },
+  { id: '12', votes: 34, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '13', votes: 30, value: 'An Open Letter', hidden: false },
   { id: '14', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
   { id: '15', votes: 0, value: 'An Open Letter', hidden: false },
-  { id: '16', votes: 0, value: 'An Open Letter GGGGG', hidden: false },
+  { id: '16', votes: 65, value: 'An Open Letter GGGGG', hidden: false },
   { id: '17', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
-  { id: '18', votes: 0, value: 'An Open Letter', hidden: false },
-  { id: '19', votes: 0, value: 'Seemingly Impossible Swift Programs', hidden: false },
+  { id: '18', votes: 54, value: 'An Open Letter', hidden: false },
+  { id: '19', votes: 9, value: 'Seemingly Impossible Swift Programs', hidden: false },
   { id: '20', votes: 0, value: 'An Open Letter', hidden: false }
-  ];
+  ]
 
   constructor(private cdr: ChangeDetectorRef) {
 

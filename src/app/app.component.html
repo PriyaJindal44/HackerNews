@@ -15,7 +15,7 @@
       <tr *ngFor="let item of newsList| paginate: config;let i=index" [hidden]="item.hidden"
         [ngClass]="{'hidden':item.hidden}">
         <ng-container>
-          <td>0</td>
+          <td>{{item.id}}</td>
           <td>{{item.votes}}</td>
           <td><i class="fa fa-sort-up icon" (click)="countVotes(item)"></i></td>
           <td>{{item.value}} <button (click)="hideRow(item)">[hide]</button></td>
