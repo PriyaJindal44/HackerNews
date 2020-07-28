@@ -47,8 +47,10 @@ export class AppComponent implements AfterViewInit {
     let votes = [];
 
     for (let x = 0; x < this.newsList.length; x++) {
-      newsID.push(this.newsList[x].id);
-      votes.push(this.newsList[x].votes);
+      if (!this.newsList[x].hidden) {
+        newsID.push(this.newsList[x].id);
+        votes.push(this.newsList[x].votes);
+      }
     }
 
     this.chart = new Chart(this.chartRef.nativeElement, {
@@ -144,6 +146,7 @@ export class AppComponent implements AfterViewInit {
       }
     }
     localStorage.setItem("userList", JSON.stringify(this.newsList));
+    this.ngAfterViewInit();
   }
 
 

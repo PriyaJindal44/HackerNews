@@ -34,7 +34,13 @@
     }
 
     .hidden {
-      display: none;
+      tbody tr:nth-child(even) {
+        background-color: #a8a8a8;
+      }
+      tbody tr:nth-child(odd) {
+        background-color: #d3d3d3;
+      }
+      //display: none;
     }
 
     .icon {
